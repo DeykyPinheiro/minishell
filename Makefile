@@ -4,23 +4,22 @@ LIBFT_PATH = ./libraries/libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 CC =	gcc
-CFLAGS	= -Wall \
-		-Werror \
+CFLAGS	= -Wall	\
+		-Werror	\
 		-Wextra
 
-LFLAGS =	-lreadline \
-			-L \
-			$(LIBFT_PATH) \
+LFLAGS =	-lreadline		\
+			-L				\
+			$(LIBFT_PATH)	\
 			-lft
 
-vpath %.c src 						\
-		src/builtin 				\
-		src/parser 					\
-		src/signal 					\
+vpath %.c src			\
+		src/builtin		\
+		src/parser		\
+		src/signal		\
 
-
-SRC =  ft_cd.c \
-		test2.c \
+SRC =  ft_cd.c			\
+		test2.c			\
 		test.c
 
 RM = rm -rf
@@ -43,7 +42,6 @@ $(LIBFT):
 $(OBJ_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-
 clean:
 	$(RM) $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT_PATH) clean
@@ -57,7 +55,7 @@ re: fclean all
 v:	all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=readline.supp --trace-children=yes --verbose --log-file=valgrind-out.txt ./$(NAME)
 
-r: all
+r:	all
 	clear
 	./$(NAME)
 

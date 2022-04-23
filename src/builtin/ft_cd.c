@@ -1,9 +1,9 @@
-#include <stdio.h>
+# include <stdio.h>
 #include "../minishell.h"
 
-int main(void)
+int	main(void)
 {
-	char *l;
+	char	*l;
 
 	l = "ola";
 	printf("hello world!\n");

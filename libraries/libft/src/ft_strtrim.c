@@ -6,7 +6,7 @@
 /*   By: demikael <pinheiromikael96@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 22:29:04 by demikael          #+#    #+#             */
-/*   Updated: 2021/08/14 22:29:05 by demikael         ###   ########.fr       */
+/*   Updated: 2022/04/23 17:50:00 by demikael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static size_t	first_char_end(char const *s1, char const *set)
 	size_t	i;
 
 	i = ft_strlen(s1);
-	while (ft_strchr(set, s1[i]) && i > 0 )
+	while (ft_strchr(set, s1[i]) && i > 0)
 		i--;
 	return (i + 1);
 }
