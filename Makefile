@@ -38,22 +38,27 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 $(LIBFT):
-	make -C $(LIBFT_PATH)
+	$(MAKE) -C $(LIBFT_PATH)
 
 $(OBJ_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-r: all
-	./$(NAME)
 
 clean:
 	$(RM) $(OBJ_DIR)
-	make -C $(LIBFT_PATH) clean
+	$(MAKE) -C $(LIBFT_PATH) clean
 
 fclean: clean
+	$(MAKE) -C $(LIBFT_PATH) fclean
 	$(RM) $(NAME)
-	make -C $(LIBFT_PATH) fclean
 
 re: fclean all
+
+v:	all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=readline.supp --trace-children=yes --verbose --log-file=valgrind-out.txt ./$(NAME)
+
+r: all
+	clear
+	./$(NAME)
 
 .PHONY: all clean fclean re
