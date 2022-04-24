@@ -6,7 +6,7 @@
 /*   By: demikael <pinheiromikael96@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 22:29:28 by demikael          #+#    #+#             */
-/*   Updated: 2021/09/06 14:48:34 by demikael         ###   ########.fr       */
+/*   Updated: 2022/04/24 12:58:00 by demikael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -500,7 +500,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
  * @brief clean a ptr
  * @param prt to be clean
  */
-void	ft_free_ptr(char **str);
+void	free_ptr(char **str);
 
 /**
  * @brief count digit in a number

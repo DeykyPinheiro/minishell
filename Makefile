@@ -18,9 +18,8 @@ vpath %.c src			\
 		src/parser		\
 		src/signal		\
 
-SRC =  ft_cd.c			\
-		test2.c			\
-		test.c
+SRC =	main.c			\
+		minishell.c		\
 
 RM = rm -rf
 
