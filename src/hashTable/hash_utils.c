@@ -1,6 +1,6 @@
-#include "../../libraries/libft/src/libft.h"
+#include "hash_table.h"
 
-void	init_table(t_hash_elem *table)
+void	init_table(t_hash_elem **table)
 {
 	int	i;
 
@@ -19,11 +19,11 @@ void	clear_element(t_hash_elem *elem)
 	free(elem);
 }
 
-void clear_node(t_hash_elem *node)
+void	clear_node(t_hash_elem *node)
 {
 	t_hash_elem	*prev;
 
-	while(node)
+	while (node)
 	{
 		prev = node;
 		node = node->next;
