@@ -14,58 +14,56 @@ int	is_valid_line(t_minishell *shell)
 	return (is_valid);
 }
 
-char *colorir_cwd(char *cwd)
+char	*colorir_cwd(char *cwd)
 {
-	char *tmp;
-	char *colored;
+	char	*tmp;
+	char	*colored;
 
 	tmp = ft_strjoin(CYAN, cwd);
 	free(cwd);
-	colored = ft_strjoin(tmp, DEFAULT"\n" RED("❯ "));
+	colored = ft_strjoin(tmp, DEFAULT"\n"RED"❱ "DEFAULT);
 	free(tmp);
 	return (colored);
 }
 
-char	*get_current_path()
+char	*get_current_path(void)
 {
 	char	*cwd;
 
 	cwd = ft_calloc(PATH_MAX, sizeof(char));
-	if(!cwd)
+	if (!cwd)
 	{
 		printf("aviso de erro\n");
 		return (NULL);
 	}
-	if(!getcwd(cwd, PATH_MAX))
+	if (!getcwd(cwd, PATH_MAX))
 	{
 		printf("aviso de erro\n");
 		return (NULL);
 	}
-	return(colorir_cwd(cwd));
+	return (colorir_cwd(cwd));
 }
 
 void	minishell(int argc, char *argv[], char *envp[])
 {
+	t_minishell	shell;
+	char		*cwd;
+
 	(void)argc;
 	(void)argv;
 	(void)envp;
-
-	t_minishell	shell;
-	char		*cwd;
 	while (1)
 	{
 		cwd = get_current_path();
 		shell.line = readline(cwd);
 		free(cwd);
 		if (!shell.line)
-			EXIT_SUCCESS;
+			exit(0);
 		if (!is_valid_line(&shell))
 		{
 			free_ptr(&shell.line);
-			continue;
+			continue ;
 		}
 		free_ptr(&shell.line);
 	}
-
 }
-
