@@ -3,6 +3,7 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include "source/source.h"
 # include "../libraries/libft/src/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
