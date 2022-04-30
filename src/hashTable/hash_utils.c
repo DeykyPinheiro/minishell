@@ -16,7 +16,9 @@ void	clear_element(t_hash_elem *elem)
 {
 	free(elem->key);
 	free(elem->data);
-	free(elem);
+	if (elem)
+		free(elem);
+	elem = NULL;
 }
 
 void	clear_node(t_hash_elem *node)
@@ -38,5 +40,6 @@ void	clear_table(t_hash_elem **table)
 	i = 0;
 	while (i < HASH_SIZE)
 		clear_node(table[i++]);
-	free(table);
+	if (table)
+		free(table);
 }
