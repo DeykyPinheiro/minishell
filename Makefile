@@ -14,12 +14,18 @@ LFLAGS =	-lreadline		\
 			-lft
 
 vpath %.c src			\
-		src/builtin		\
-		src/parser		\
-		src/signal		\
+		src/input		\
 
-SRC =	main.c			\
-		minishell.c		\
+# src/builtin		\
+# src/parser		\
+# src/signal		\
+
+SRC =	main.c				\
+		minishell.c			\
+		next_char.c			\
+		peak_char.c			\
+		skip_white_space.c	\
+		unget_char.c
 
 RM = rm -rf
 

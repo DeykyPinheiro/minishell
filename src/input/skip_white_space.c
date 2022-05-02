@@ -1,4 +1,4 @@
-#include "source.h"
+#include "input.h"
 
 void	skip_white_space(t_source *src)
 {

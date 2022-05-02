@@ -1,4 +1,4 @@
-#include "source.h"
+#include "input.h"
 
 char	next_char(t_source *src)
 {

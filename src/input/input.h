@@ -1,5 +1,5 @@
-#ifndef SOURCE_H
-# define SOURCE_H
+#ifndef INPUT_H
+# define INPUT_H
 
 # define EOF (-1)
 # define ERRCHAR (0)

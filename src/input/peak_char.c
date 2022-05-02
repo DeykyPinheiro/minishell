@@ -1,4 +1,4 @@
-#include "source.h"
+#include "input.h"
 
 char	peak_char(t_source *src)
 {
