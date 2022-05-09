@@ -27,7 +27,7 @@ SRC	+=	ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c
 SRC	+=	ft_tolower.c ft_toupper.c ft_count_digit.c free_ptr.c
 SRC	+=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 SRC	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c
-SRC	+=	ft_lstiter.c ft_lstmap.c
+SRC	+=	ft_lstiter.c ft_lstmap.c ft_realloc.c
 
 OBJ	= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 

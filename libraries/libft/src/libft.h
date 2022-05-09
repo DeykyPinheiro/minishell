@@ -6,7 +6,7 @@
 /*   By: demikael <pinheiromikael96@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 22:29:28 by demikael          #+#    #+#             */
-/*   Updated: 2022/04/24 12:58:00 by demikael         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:23:45 by demikael         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -509,5 +509,16 @@ void	free_ptr(char **str);
  * @return size of number
  */
 int		ft_count_digit(long int n);
+
+/**
+ * @brief copy the pointer passed to another part of memory
+ * @param src source from which the data will be copied
+ * @param original_len current size of allocated memory
+ * @param new_len new memory size to be allocated
+ * @return new_len 0, limpa o src e retorna NULL.
+ * if new size smaller than current, return current pointer
+ * passing all checks, it copies the ptr memory to a new location in memory
+ */
+void	*ft_realloc(void *ptr, int original_len, int new_len);
 
 #endif
