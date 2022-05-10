@@ -1,6 +1,6 @@
 #include "input.h"
 
-char	peak_char(t_source *src)
+char	peak_char(t_input *src)
 {
 	long	pos;
 

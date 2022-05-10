@@ -1,6 +1,6 @@
 #include "input.h"
 
-void	skip_white_space(t_source *src)
+void	skip_white_space(t_input *src)
 {
 	char	c;
 

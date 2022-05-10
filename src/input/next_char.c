@@ -1,6 +1,6 @@
 #include "input.h"
 
-char	next_char(t_source *src)
+char	next_char(t_input *src)
 {
 	if (!src || !src->buffer)
 		return (ERRCHAR);

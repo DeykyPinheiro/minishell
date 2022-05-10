@@ -5,17 +5,17 @@
 # define ERRCHAR (0)
 # define INIT_SRC_POS (-2)
 
-typedef struct s_source
+typedef struct s_input
 {
 	char	*buffer;
 	long	bufsize;
 	long	curpos;
-}	t_source;
+}	t_input;
 
-void	unget_char(t_source *src);
-char	next_char(t_source *src);
-char	peak_char(t_source *src);
-void	skip_white_space(t_source *src);
+void	unget_char(t_input *src);
+char	next_char(t_input *src);
+char	peak_char(t_input *src);
+void	skip_white_space(t_input *src);
 
 #endif
 
