@@ -1,9 +1,11 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-void print_prompt1(void);
-void print_prompt2(void);
+// imprimir o caracter de recebimento
+void	print_prompt1(void);
+void	print_prompt2(void);
 
-char *read_cmd(void);
+// receber o comando da CLI
+char	*read_cmd(void);
 
 #endif
