@@ -1,0 +1,14 @@
+Como o shell analisa meus comandos, os converte em instruções executáveis ​​e, em seguida, executa esses comandos?
+
+Como o shell implementa os diferentes procedimentos de expansão de palavras, como expansão de parâmetros, substituição de comandos e expansão aritmética?
+
+Como o shell implementa o redirecionamento de I/O?
+
+
+parte central é o CLI (command line interpreter)
+que é dividido em duas parte
+front end (analizador)
+back end (executor)
+
+analizador - verifica a entrada e divide em tokens, cria a AST, o AST passa pelo executor, que le e executa o comando analisado
+

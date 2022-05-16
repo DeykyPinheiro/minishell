@@ -1,0 +1,9 @@
+{
+	"files.associations": {
+		"libft.h": "c",
+		"minishell.h": "c",
+		"readline.h": "c",
+		"scanner.h": "c",
+		"unistd.h": "c"
+	}
+}
