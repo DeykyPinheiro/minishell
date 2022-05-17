@@ -1,3 +1,4 @@
+Parte 1
 Como o shell analisa meus comandos, os converte em instruções executáveis ​​e, em seguida, executa esses comandos?
 
 Como o shell implementa os diferentes procedimentos de expansão de palavras, como expansão de parâmetros, substituição de comandos e expansão aritmética?
@@ -11,4 +12,26 @@ front end (analizador)
 back end (executor)
 
 analizador - verifica a entrada e divide em tokens, cria a AST, o AST passa pelo executor, que le e executa o comando analisado
+================================================================================
 
+
+Parte 2
+shell tem que analisar um comando simples
+o que é um comando simples?
+uma lista de palavras separadas por caracteres em branco, a primeira palavra é
+o nome do comando e é obrigatoria
+
+necessario para executar:
+-digitalizar a entrada, um char por ver para encontrar o token(scanner lexico)
+-extrair tokens de entradam (tokenizacao)
+-analizar esses tokens e criar AST(analizador)
+-executar AST(executor)
+
+
+no scanner de input devemos ser capazes de:
+-recuperar o proximo caracter de entrada
+-retornar o caracter que lemos pro input
+-verificar o proximo caracter sem avanca
+-pular espacos em branco
+
+abstrair o input
