@@ -2,7 +2,9 @@
 #include "shell.h"
 #include "source.h"
 
-void	next_char(t_source *src)
+
+// volta uma casa no scanner
+void	unget_char(t_source *src)
 {
 	if (src->curpos < 0)
 		return ;
@@ -10,8 +12,10 @@ void	next_char(t_source *src)
 
 }
 
+// olha a casa na frente do scanner e altera o src
 char	next_char(t_source *src)
 {
+	// verifica erros
 	if (!src || !src->buffer)
 	{
 		errno = ENODATA;
@@ -26,6 +30,7 @@ char	next_char(t_source *src)
 		c1 = src->buffer[src->curpos];
 	}
 
+	// informa o fim da string
 	if (++src->curpos == src->bufsize)
 	{
 		src->curpos = src->bufsize;
@@ -34,14 +39,18 @@ char	next_char(t_source *src)
 	return (src->buffer[src->curpos]);
 }
 
+// funciona semelhante ao next_chat só que esse não altera o curpos
+// traz o proximo sem alterar o src
 char	peek_char(t_source *src)
 {
+	// verificando erros
 	if (!src || !src->buffer)
 	{
 		errno = ENODATA;
 		return (ERRCHAR);
 	}
 
+	// guardando a posicao atual
 	long pos = src->curpos;
 
 	if (pos == INIT_SRC_POS)
@@ -54,9 +63,11 @@ char	peek_char(t_source *src)
 	{
 		return (EOF);
 	}
+	// retornando a proxima posicao
 	return (src->buffer[pos]);
 }
 
+// pula todos os espacoes em branco de uma string para facilitar a tokenizacao
 void	skip_white_space(t_source *src)
 {
 	char c;

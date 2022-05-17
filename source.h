@@ -8,14 +8,18 @@
 
 typedef struct s_source
 {
-    char *buffer;
-    long bufsize;
-    long  curpos;
+    char *buffer; // -> linha recebida do CLI
+    long bufsize; // -> tamanho da linha recebida
+    long  curpos; // -> posicao atual que aponta no buffer
 }	t_source;
 
+// traz o proximo char e esquece o primeiro
 char	next_char(t_source *src);
+// recupera o ultimo caracter
 void	unget_char(t_source *src);
+// apenas olha o proximo char sem alterar
 char	peek_char(t_source *src);
+// pula os espacoes em banco numa string
 void	skip_white_space(t_source *src);
 
 
