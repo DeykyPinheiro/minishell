@@ -68,15 +68,17 @@ char	peek_char(t_source *src)
 }
 
 // pula todos os espacoes em branco de uma string para facilitar a tokenizacao
-void	skip_white_space(t_source *src)
+void	skip_white_spaces(t_source *src)
 {
 	char c;
 
-	if (!src || !src->buffer)
+	if(!src || !src->buffer)
 	{
-		return ;
+		return;
 	}
 
-	while ((c = peek_char(src) != EOF) && ((c == ' ') || (c == '\t')))
+	while(((c = peek_char(src)) != EOF) && (c == ' ' || c == '\t'))
+	{
 		next_char(src);
+	}
 }

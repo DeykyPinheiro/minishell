@@ -47,11 +47,11 @@ t_token	*create_token(char *str)
 
 	// preenche com um monte de 0
 	// seta o tamanho da string
-	memcmp(tok, 0, sizeof(t_token));
+	memset(tok, 0, sizeof(t_token));
 	tok->text_len = strlen(str);
 
 	// maloca
-	char nstr = malloc(tok->text_len + 1);
+	char *nstr = malloc(tok->text_len + 1);
 	if (!nstr)
 	{
 		free(tok);
@@ -69,108 +69,99 @@ t_token	*create_token(char *str)
 // limpa o token se o token existir
 void	free_token(t_token *tok)
 {
-	if (tok->text)
+	if(tok->text)
+	{
 		free(tok->text);
+	}
 	free(tok);
 }
 
 
 t_token	*tokenize(t_source *src)
 {
-	int endloop = 0;
+    int  endloop = 0;
 
-	// verifica se tem um src
-	if (!src || !src->buffer || !src->bufsize)
-	{
-		errno - ENODATA;
-		return (&eof_token);
-	}
+    if(!src || !src->buffer || !src->bufsize)
+    {
+        errno = ENODATA;
+        return &eof_token;
+    }
 
-	// se nãou houver tok inicializa agora
-	if (!tok_buf)
-	{
-		tok_bufsize = 1024;
-		tok_buf = malloc(tok_bufsize);
-		if (!tok_buf)
-		{
-			errno = ENOMEM;
-			return (&eof_token);
-		}
-	}
+    if(!tok_buf)
+    {
+        tok_bufsize = 1024;
+        tok_buf = malloc(tok_bufsize);
+        if(!tok_buf)
+        {
+            errno = ENOMEM;
+            return &eof_token;
+        }
+    }
 
-	// seta valores das variasveis globais
-	tok_bufindex = 0;
-	tok_buf[0] = '\0';
+    tok_bufindex     = 0;
+    tok_buf[0]       = '\0';
 
-	// pega o proximo char
-	// verifica se não ta no fim, se tiver ele retorna EOF
-	char nc = next_char(src);
-	if (nc = ERRCHAR || nc == EOF)
-	{
-		return (&eof_token);
-	}
+    char nc = next_char(src);
 
-	// faz um loop para verificar os caracterez de entrada um de cada vez
-	do
-	{
-		switch (nc)
-		{
-			// se for um espaco ele verifica o token para ver se ta vazio
-			// se tiver algo no token delimitamos e acabamos com o loop
-			// caso contrario pulamos o espacos e avancamos para o
-			// inicio do token
-			case ' ':
-			case '\t':
-				if (tok_bufindex > 0)
-				{
-					endloop = 1;
-				}
-				break;
+    if(nc == ERRCHAR || nc == EOF)
+    {
+        return &eof_token;
+    }
 
-			// se for um '\n' tem que finalizar o loop, pq não tem mais nada
-			case '\n':
-				if (tok_bufindex > 0)
-				{
-					unget_char(src);
-				}
-				else
-				{
-					add_to_buf(nc);
-				}
-				endloop = 1;
-				break;
+    do
+    {
+        switch(nc)
+        {
+            case ' ':
+            case '\t':
+                if(tok_bufindex > 0)
+                {
+                    endloop = 1;
+                }
+                break;
 
-			default:
-				add_to_buf(nc);
-				break;
-		}
+            case '\n':
+                if(tok_bufindex > 0)
+                {
+                    unget_char(src);
+                }
+                else
+                {
+                    add_to_buf(nc);
+                }
+                endloop = 1;
+                break;
 
-		if (endloop)
-		{
-			break;
-		}
+            default:
+                add_to_buf(nc);
+                break;
+        }
 
-	} while ((nc = next_char(src)) != EOF);
+        if(endloop)
+        {
+            break;
+        }
 
-	if (tok_bufindex == 0)
-	{
-		 return (&eof_token);
-	}
+    } while((nc = next_char(src)) != EOF);
 
-	if (tok_bufindex >= tok_bufsize)
-	{
-		tok_bufindex--;
-	}
-	tok_buf[tok_bufindex] = '\0';
+    if(tok_bufindex == 0)
+    {
+        return &eof_token;
+    }
 
-	// depois de separarmos o token
-	// criarmos um token setamos o novo src e retornamos o valor
-	t_token *tok = create_token(tok_buf);
-	if (!tok){
-		fprintf(stderr, "error: failed to aloc buffer: %s\n", strerror(errno));
-		return (&eof_token);
-	}
+    if(tok_bufindex >= tok_bufsize)
+    {
+        tok_bufindex--;
+    }
+    tok_buf[tok_bufindex] = '\0';
 
-	tok->src = src;
-	return (tok);
+    t_token *tok = create_token(tok_buf);
+    if(!tok)
+    {
+        fprintf(stderr, "error: failed to alloc buffer: %s\n", strerror(errno));
+        return &eof_token;
+    }
+
+    tok->src = src;
+    return tok;
 }

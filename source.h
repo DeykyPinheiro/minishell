@@ -20,7 +20,7 @@ void	unget_char(t_source *src);
 // apenas olha o proximo char sem alterar
 char	peek_char(t_source *src);
 // pula os espacoes em banco numa string
-void	skip_white_space(t_source *src);
+void	skip_white_spaces(t_source *src);
 
 
 #endif

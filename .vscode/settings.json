@@ -4,6 +4,9 @@
 		"minishell.h": "c",
 		"readline.h": "c",
 		"scanner.h": "c",
-		"unistd.h": "c"
-	}
+		"unistd.h": "c",
+		"type_traits": "c",
+		"parser.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
 }

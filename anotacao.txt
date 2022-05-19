@@ -35,3 +35,11 @@ no scanner de input devemos ser capazes de:
 -pular espacos em branco
 
 abstrair o input
+================================================================================
+
+Parte 3
+Analisando comando simples:
+o interpretador chama scanner lexico pra trazer os token e montar a AST, o AST é
+o que passamos para o executor
+
+
